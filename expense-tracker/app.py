@@ -13,7 +13,7 @@ app.secret_key = "change-this-in-production-abc123"
 # ── MongoDB ─────────────────────────────────────────────────────────────────
 # Local  : mongodb://localhost:27017/expensedb
 # Atlas  : mongodb+srv://<user>:<pass>@cluster.mongodb.net/expensedb
-app.config["MONGO_URI"] = "mongodb://localhost:27017/expensedb"
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo        = PyMongo(app)
 users_col    = mongo.db.users
