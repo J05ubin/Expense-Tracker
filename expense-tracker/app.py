@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
 from functools import wraps
 import csv, io
+import os
 
 app = Flask(__name__)
 app.secret_key = "change-this-in-production-abc123"
@@ -198,6 +199,5 @@ def export_csv():
                     headers={"Content-Disposition": "attachment; filename=expenses.csv"})
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host="0.0.0.0", port=port)
